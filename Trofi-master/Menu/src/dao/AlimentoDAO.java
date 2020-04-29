@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Alimento;
-import modelo.Articulo;
 import modelo.Conexion;
 
 public class AlimentoDAO {
@@ -85,7 +84,7 @@ public class AlimentoDAO {
 			ResultSet res = statement.executeQuery();
 			if (res.next()) {
 				alimento = new Alimento(res.getString("nombre"), res.getString("descripcion"), 
-						res.getDouble("costo"), res.getInt("id_alimento"), res.getCat("id_categoria"));
+						res.getDouble("costo"), res.getInt("id_alimento"), res.getInt("id_categoria"));
 			}
 			res.close();
 			con.desconectar();

@@ -3,7 +3,7 @@
   <display-name>Menu</display-name>
   <context-param>
     <param-name>jdbcURL</param-name>
-    <param-value>spring.datasource.url=jdbc:mysql://localhost:3306/trofi?serverTimezone=UTC</param-value>
+    <param-value>jdbc:mysql://localhost:3306/trofi</param-value>
   </context-param>
   <context-param>
     <param-name>jdbcUsername</param-name>

@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import dao.AlimentoDAO;
 import dao.CategoriaDAO;
 import modelo.Alimento;
-import modelo.Articulo;
 import modelo.Categoria;
 
 
@@ -61,22 +61,22 @@ public class Menu extends HttpServlet {
 				mostrarAlimentos(request, response);
 				break;
 			case "editarCategorias":
-				mostrarCategorias(request, response);
+				editarCategoria(request, response);
 				break;
 			case "editarAlimentos":
-				mostrarAlimentos(request, response);
+				editarAlimento(request, response);
 				break;
 			case "eliminarCategorias":
-				mostrarCategorias(request, response);
+				eliminarCategoria(request, response);
 				break;
 			case "eliminarAlimentos":
-				mostrarAlimentos(request, response);
+				eliminarAlimento(request, response);
 				break;
 			case "agregarCategorias":
-				mostrarCategorias(request, response);
+				agregarCategorias(request, response);
 				break;
 			case "agregarAlimentos":
-				mostrarAlimentos(request, response);
+				agregarAlimento(request, response);
 				break;
 			default:
 				break;
@@ -124,43 +124,43 @@ public class Menu extends HttpServlet {
 	
 	
 	private void editarAlimento(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		Alimento alimento = new Alimento(request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("costo"), Integer.parseInteger(request.getParameter("id_alimento")), Integer.parseInteger(request.getParameter("id_categoria")));
-		alimentoDAO.actualizar(alimento);
+		Alimento alimento = new Alimento(request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("costo")), Integer.parseInt(request.getParameter("id_alimento")), Integer.parseInt(request.getParameter("id_categoria")));
+		alimentoDAO.editarAlimento(alimento);
 		index(request, response);
 	}
 	
 	private void editarCategoria(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		Categoria categoria = new Categoria();
-		categoriaDAO.actualizar(categoria);
+		Categoria categoria = new Categoria(Integer.parseInt(request.getParameter("id_categoria")), request.getParameter("nombre"));
+		categoriaDAO.editarCategoria(categoria);
 		index(request, response);
 	}
 	
 	private void eliminarCategoria(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		Categoria categoria = categoriaDAO.obtenerPorId(Integer.parseInt(request.getParameter("id")));
-		categoriaDAO.eliminar(categoria);
+		categoriaDAO.eliminarCategoria(categoria);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}
 	
 	private void eliminarAlimento(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		Alimento alimento = alimentoDAO.obtenerPorId(Integer.parseInt(request.getParameter("id")));
-		alimentoDAO.eliminar(alimento);
+		alimentoDAO.eliminarAlimento(alimento);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 		
 	}
 	
 	private void agregarCategorias(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		Categoria catagoria = new Categoria();
-		categoriaDAO.insertar(categoria);
+		Categoria categoria = new Categoria(Integer.parseInt(request.getParameter("id_categoria")), request.getParameter("nombre"));
+		categoriaDAO.agregarCategoria(categoria);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);
 	}
 	
 	private void agregarAlimento(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-		Alimento alimento = new Alimento(request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("costo"), Integer.parseInteger(request.getParameter("id_alimento")), Integer.parseInteger(request.getParameter("id_categoria")));
-		alimentoDAO.insertar(alimento);
+		Alimento alimento = new Alimento(request.getParameter("nombre"), request.getParameter("descripcion"), Double.parseDouble(request.getParameter("costo")), Integer.parseInt(request.getParameter("id_alimento")), Integer.parseInt(request.getParameter("id_categoria")));
+		alimentoDAO.agregarAlimento(alimento);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 		dispatcher.forward(request, response);

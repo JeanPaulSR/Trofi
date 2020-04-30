@@ -30,8 +30,8 @@
 				<td><c:out value="${categoria.id}"/></td>
 				<td><c:out value="${categoria.nombre}"/></td>
 				<td><a href="menu?action=mostrarAlimentos&id=<c:out value="${categoria.id}" />">Seleccionar</a></td>
-				<td><a href="menu?action=editarCategoria&id=<c:out value="${categoria.id}" />">Seleccionar</a></td>
-				<td><a href="menu?action=eliminarCategoria&id=<c:out value="${categoria.id}" />">Seleccionar</a></td>
+				<td><a href="menu?action=editarCategoria&id=<c:out value="${categoria.id}" />">Editar</a></td>
+				<td><a href="menu?action=eliminarCategoria&id=<c:out value="${categoria.id}" />">Eliminar</a></td>
 			</tr>
 		</c:forEach>
 	</table>

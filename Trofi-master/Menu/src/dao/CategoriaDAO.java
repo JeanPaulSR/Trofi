@@ -27,8 +27,8 @@ public class CategoriaDAO {
 		con.conectar();
 		connection = con.getJdbcConnection();
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setInt(1, alimento.getId());
-		statement.setString(2, alimento.getNombre());
+		statement.setInt(1, categoria.getId());
+		statement.setString(2, categoria.getNombre());
 		boolean rowInserted = statement.executeUpdate() > 0;
 		statement.close();
 		con.desconectar();
@@ -79,14 +79,14 @@ public class CategoriaDAO {
 	}
 	
 	// actualizar categoria
-	public boolean editarAlimento(Categoria categoria) throws SQLException {
+	public boolean editarCategoria(Categoria categoria) throws SQLException {
 		boolean rowActualizar = false;
 		String sql = "UPDATE categoria SET nombre=? WHERE id_categoria=?";
 		con.conectar();
 		connection = con.getJdbcConnection();
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setInt(1, categoria.getId());
-		statement.setString(2, alimento.getNombre());
+		statement.setString(2, categoria.getNombre());
 		rowActualizar = statement.executeUpdate() > 0;
 		statement.close();
 		con.desconectar();
@@ -94,7 +94,7 @@ public class CategoriaDAO {
 	}
 	
 	//eliminar categoria
-	public boolean eliminarAlimento(Categoria categoria) throws SQLException {
+	public boolean eliminarCategoria(Categoria categoria) throws SQLException {
 		boolean rowEliminar = false;
 		String sql = "DELETE FROM categoria WHERE ID=?";
 		con.conectar();

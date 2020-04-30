@@ -16,6 +16,6 @@
 		</tr>
 		<tr>
 			<td><a href="menu?action=index" >Ir al menú</a> </td>
-			<td><a href="menu?action=mostrarAlimentos&id=<c:out value="${id_cat}" />">Volver</a> </td>
+			<td><a href="menu?action=mostrarAlimento&id=<c:out value="${id_cat}" />">Volver</a> </td>
 		</tr>
 	</table>

@@ -12,7 +12,7 @@
 	<h1>Alimentos</h1>
 	<table>
 		<tr>
-			<td><a href="menu?action=mostrarCategorias" >Volver a Categorias</a> </td>
+			<td><a href="menu?action=mostrarCategoria" >Volver a Categorias</a> </td>
 			<td><a href="menu?action=agregarAlimento&id=<c:out value="${alimento.id}" />&id_cat=<c:out value="${id_cat}" />">Agregar</a></td>
 		</tr>
 	</table>
